@@ -45,5 +45,5 @@ def is_dinosaur(search_term):
 @proxy_bp.route("/search", methods=["GET"])
 def return_hello():
 
-    return is_dinosaur("Brontosaurus").json()
+    return is_dinosaur("Brontosaurus")
 
