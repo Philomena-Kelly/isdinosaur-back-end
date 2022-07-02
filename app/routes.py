@@ -1,22 +1,20 @@
 from requests import get
-from flask import Blueprint, Flask
 from bs4 import BeautifulSoup
-from flask import Flask
+import requests
+from flask import Flask, Blueprint, request, jsonify
+import os
+from dotenv import load_dotenv
 import requests
 
 
 
-app = Flask(__name__)
-SITE_NAME = 'https://google.com/'
+load_dotenv()
 
-# @app.route('/', defaults={'path': ''})
-# @app.route('/<path:path>')
-# def proxy(path):
+proxy_bp = Blueprint("proxy_bp", __name__)
 
-# dinosaur = Blueprint("goals_bp", __name__, url_prefix="/goals")
 
 def is_dinosaur(search_term):
-    dino = "no"
+    dino = {"answer" : "no"}
     url = 'https://en.wikipedia.org/w/api.php'
 
     params = {
@@ -39,13 +37,13 @@ def is_dinosaur(search_term):
     if infobox:
         dinosaur = infobox.find(href="/wiki/Dinosaur")
         if dinosaur:
-            dino = "yes"
+            dino = {"answer" : "yes"}
 
     return dino
 
 
-@app.route("/search", methods=["GET"])
+@proxy_bp.route("/search", methods=["GET"])
 def return_hello():
 
-    return is_dinosaur("Brontosaurus")  
+    return is_dinosaur("Brontosaurus").json()
 
