@@ -30,7 +30,7 @@ def is_dinosaur(search_term):
     try:
         soup = BeautifulSoup(data['parse']['text']['*'],'html.parser')
     except:
-        return "no"
+        return {"answer" : "no"}
 
     infobox = soup.find('table',{'class':'infobox','class':'biota'})
 
