@@ -6,7 +6,6 @@ Creates an inbetween API to connect IsDinosaur front end to Wikipedias API. The 
 <br>
 
 ## Search Dinosaur
-***
 
 **Endpoint:** GET '/search'
 
