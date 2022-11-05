@@ -1,8 +1,5 @@
-from requests import get
 from bs4 import BeautifulSoup
-import requests
-from flask import Flask, Blueprint, request, jsonify
-import os
+from flask import Blueprint, request
 from dotenv import load_dotenv
 import requests
 
